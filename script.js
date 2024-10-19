@@ -8,13 +8,13 @@
 body {
     font-family: 'Arial', sans-serif;
     line-height: 1.6;
-    background-color: #f4f4f4; /* Color de fondo claro */
+    background-color: #f9f9f9; /* Color de fondo claro y suave */
     color: #333; /* Texto oscuro */
 }
 
 /* Estilo del encabezado */
 header {
-    background: linear-gradient(to right, #ff4b1f, #ff9068); /* Degradado de rojo a naranja */
+    background-color: #f44336; /* Un rojo más suave */
     color: white;
     padding: 2rem 0;
     text-align: center;
@@ -32,17 +32,17 @@ section {
     margin: 2rem 0;
     padding: 2rem;
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
 h2 {
     margin-bottom: 1rem;
-    color: #ff4b1f; /* Color de encabezados */
+    color: #444; /* Color de encabezados más suave */
 }
 
 /* Estilo de botones */
 .btn {
-    background: #ff4b1f;
+    background: #f44336; /* Un rojo más suave */
     color: white;
     padding: 10px 20px;
     border: none;
@@ -52,7 +52,7 @@ h2 {
 }
 
 .btn:hover {
-    background: #ff9068; /* Color de fondo del botón al pasar el mouse */
+    background: #d32f2f; /* Color de fondo del botón al pasar el mouse */
 }
 
 /* Estilo de formulario */
@@ -77,7 +77,7 @@ input[type="text"], select {
     position: fixed;
     bottom: 80px; /* Asegúrate de que no esté sobre el footer */
     right: 20px;
-    background-color: #ff4b1f;
+    background-color: #25D366; /* Color verde de WhatsApp */
     border-radius: 50%;
     padding: 15px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.2);
@@ -97,4 +97,4 @@ footer {
     position: relative;
     bottom: 0;
     width: 100%;
-        }
+}
