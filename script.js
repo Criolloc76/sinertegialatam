@@ -1,57 +1,100 @@
-document.getElementById('registro-form').addEventListener('submit', function(event) {
-    event.preventDefault();
-    
-    const whatsappInput = document.getElementById('whatsapp').value;
-    const paisSelect = document.getElementById('pais');
-    const selectedCountry = paisSelect.options[paisSelect.selectedIndex].value;
-    const lada = paisSelect.options[paisSelect.selectedIndex].dataset.lada;
-    const isValidWhatsApp = validateWhatsApp(whatsappInput, selectedCountry);
-
-    if (isValidWhatsApp) {
-        alert('Te has registrado correctamente. ¡Gracias!');
-        // Aquí puedes agregar la lógica para enviar los datos a Google Sheets.
-    } else {
-        alert('Número de WhatsApp no válido para el país seleccionado (' + lada + ').');
-    }
-});
-
-function validateWhatsApp(number, country) {
-    // Validar el número de WhatsApp basado en el país
-    const countryDigits = {
-        'Colombia': 10,
-        'México': 10,
-        'Perú': 9,
-        'Costa Rica': 8,
-        'Ecuador': 9,
-        'Panamá': 7,
-        'Venezuela': 10,
-    };
-
-    const expectedLength = countryDigits[country] || 10; // Por defecto, 10 dígitos
-    return number.length === expectedLength && /^\d+$/.test(number);
+/* Reset CSS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-document.getElementById('chatbot-button').addEventListener('click', function() {
-    document.getElementById('chatbot-modal').style.display = 'block';
-});
-
-document.getElementById('close-chat').addEventListener('click', function() {
-    document.getElementById('chatbot-modal').style.display = 'none';
-});
-
-document.getElementById('send-btn').addEventListener('click', function() {
-    const userInput = document.getElementById('user-input').value;
-    if (userInput) {
-        document.getElementById('chat-message').textContent = 'Tú: ' + userInput;
-        // Aquí puedes agregar la lógica para el chatbot interactivo.
-        document.getElementById('user-input').value = ''; // Limpiar el campo de entrada
-    }
-});
-
-// Cerrar el modal al hacer clic fuera de la ventana
-window.onclick = function(event) {
-    const modal = document.getElementById('chatbot-modal');
-    if (event.target === modal) {
-        modal.style.display = "none";
-    }
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    background-color: #f4f4f4; /* Color de fondo claro */
+    color: #333; /* Texto oscuro */
 }
+
+/* Estilo del encabezado */
+header {
+    background: linear-gradient(to right, #ff4b1f, #ff9068); /* Degradado de rojo a naranja */
+    color: white;
+    padding: 2rem 0;
+    text-align: center;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+}
+
+/* Estilo de secciones */
+section {
+    background: white;
+    margin: 2rem 0;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+h2 {
+    margin-bottom: 1rem;
+    color: #ff4b1f; /* Color de encabezados */
+}
+
+/* Estilo de botones */
+.btn {
+    background: #ff4b1f;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.btn:hover {
+    background: #ff9068; /* Color de fondo del botón al pasar el mouse */
+}
+
+/* Estilo de formulario */
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-bottom: 0.5rem;
+}
+
+input[type="text"], select {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+}
+
+/* Estilo del botón flotante */
+#chat-flotante {
+    position: fixed;
+    bottom: 80px; /* Asegúrate de que no esté sobre el footer */
+    right: 20px;
+    background-color: #ff4b1f;
+    border-radius: 50%;
+    padding: 15px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+#chat-flotante a {
+    color: white;
+    font-size: 24px;
+}
+
+/* Estilo del footer */
+footer {
+    text-align: center;
+    padding: 1rem 0;
+    background: #333;
+    color: white;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+        }
