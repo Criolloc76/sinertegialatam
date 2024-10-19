@@ -20,6 +20,7 @@ header {
     text-align: center;
 }
 
+/* Contenedor central */
 .container {
     width: 90%;
     max-width: 1200px;
@@ -35,6 +36,7 @@ section {
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
+/* Estilo de encabezados */
 h2 {
     margin-bottom: 1rem;
     color: #444; /* Color de encabezados más suave */
@@ -72,6 +74,13 @@ input[type="text"], select {
     margin-bottom: 1rem;
 }
 
+/* Estilo del contenedor de WhatsApp */
+.whatsapp-input {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
 /* Estilo del botón flotante */
 #chat-flotante {
     position: fixed;
@@ -81,6 +90,7 @@ input[type="text"], select {
     border-radius: 50%;
     padding: 15px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    z-index: 100; /* Asegúrate de que esté encima de otros elementos */
 }
 
 #chat-flotante a {
