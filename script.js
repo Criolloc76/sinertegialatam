@@ -24,9 +24,19 @@ function isValidPhoneNumber(countryCode, phoneNumber) {
     const phoneLengths = {
         "52": 11, // México con el "1" incluido
         "57": 10, // Colombia
-        "51": 9   // Perú
+        "51": 9,  // Perú
+        "54": 10, // Argentina
+        "56": 9,  // Chile
+        "58": 10  // Venezuela
         // Agrega más países y sus longitudes
     };
 
     return phoneNumber.length === phoneLengths[countryCode];
 }
+
+// Comportamiento del botón de WhatsApp
+document.getElementById('whatsapp-button').addEventListener('click', function (e) {
+    e.preventDefault();
+    alert('Hola, soy el Bot con IA de Sinergia LATAM. Estoy aquí para ayudarte.'); // Saludo inicial
+    window.open('https://wa.me/521234567890', '_blank'); // Abre el chat de WhatsApp
+});
