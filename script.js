@@ -1,21 +1,32 @@
-function validarNumeroWhatsApp(codigoPais, numero) {
-    const longitudesEsperadas = {
-        "52": 10, // México (sin el 1)
-        "57": 10, // Colombia
-        "51": 9,  // Perú
-        "506": 8, // Costa Rica
-        "593": 9, // Ecuador
-        "507": 7, // Panamá
-        "58": 10  // Venezuela
-    };
+document.getElementById('lead-form').addEventListener('submit', function (e) {
+    e.preventDefault();
 
-    // Comparar la longitud del número ingresado
-    const longitudEsperada = longitudesEsperadas[codigoPais];
+    const countryCode = document.getElementById('country-select').value;
+    let phoneNumber = document.getElementById('phone-number').value;
 
-    // Caso especial para México, donde se espera +521 seguido de 10 dígitos
-    if (codigoPais === "52" && numero.length === 10) {
-        return true; // El número es válido
+    // Si es México, verifica si el número empieza con "1"
+    if (countryCode === "52") {
+        if (!phoneNumber.startsWith("1")) {
+            phoneNumber = "1" + phoneNumber;
+        }
     }
 
-    return numero.length === longitudEsperada;
+    // Validación simple para longitud del número según el país
+    if (isValidPhoneNumber(countryCode, phoneNumber)) {
+        alert(`Número registrado: +${countryCode}${phoneNumber}`);
+        // Aquí puedes enviar el número a tu servidor o a la hoja de Google
+    } else {
+        alert('El número de teléfono no es válido.');
+    }
+});
+
+function isValidPhoneNumber(countryCode, phoneNumber) {
+    const phoneLengths = {
+        "52": 11, // México con el "1" incluido
+        "57": 10, // Colombia
+        "51": 9   // Perú
+        // Agrega más países y sus longitudes
+    };
+
+    return phoneNumber.length === phoneLengths[countryCode];
 }
