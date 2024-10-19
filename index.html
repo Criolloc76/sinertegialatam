@@ -3,52 +3,69 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Respuestas Rápidas</title>
+    <title>Sinertegia Latam</title>
     <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <script src="script.js" defer></script>
 </head>
 <body>
 
-    <!-- Menú (Nombres a asignar después) -->
     <header>
+        <h1>Sinertegia Latam</h1>
         <nav>
             <ul>
-                <li>Links Pago</li>
-                <li>Mensajes</li>
-                <li>Metricas</li>
+                <li><a href="#registro">Registro</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+                <li><a href="#verificacion">Verificación</a></li>
             </ul>
         </nav>
     </header>
 
-    <!-- Cuerpo con los 30 botones -->
     <main>
-        <h1>Respuestas Rápidas</h1>
-        <div class="grid-container">
-            <!-- 30 botones en cuadrícula con textos de prueba -->
-            <button onclick="copyToClipboard(this, 'Texto de prueba 1')">Botón 1</button>
-            <button onclick="copyToClipboard(this, 'Texto de prueba 2')">Botón 2</button>
-            <button onclick="copyToClipboard(this, 'Texto de prueba 3')">Botón 3</button>            
-            <button onclick="copyToClipboard(this, 'Texto de prueba 4')">Botón 4</button>
-            <button onclick="copyToClipboard(this, 'Texto de prueba 5')">Botón 5</button>
-            <button onclick="copyToClipboard(this, 'Texto de prueba 6')">Botón 6</button>
-            <button onclick="copyToClipboard(this, 'Texto de prueba 7')">Botón 7</button>
-            <button onclick="copyToClipboard(this, 'Texto de prueba 8')">Botón 8</button>
-            <button onclick="copyToClipboard(this, 'Texto de prueba 9')">Botón 9</button>            
-            <button onclick="copyToClipboard(this, 'Texto de prueba 10')">Botón 10</button>
-            <button onclick="copyToClipboard(this, 'Texto de prueba 11')">Botón 11</button>
-            <button onclick="copyToClipboard(this, 'Texto de prueba 12')">Botón 12</button>
-            <button onclick="copyToClipboard(this, 'Texto de prueba 13')">Botón 13</button>
-            <button onclick="copyToClipboard(this, 'Texto de prueba 14')">Botón 14</button>
-            <button onclick="copyToClipboard(this, 'Texto de prueba 15')">Botón 15</button>            
-            <button onclick="copyToClipboard(this, 'Texto de prueba 16')">Botón 16</button>
-            <button onclick="copyToClipboard(this, 'Texto de prueba 17')">Botón 17</button>
-            <button onclick="copyToClipboard(this, 'Texto de prueba 18')">Botón 18</button>
-            <button onclick="copyToClipboard(this, 'Texto de prueba 19')">Botón 19</button>
-            <button onclick="copyToClipboard(this, 'Texto de prueba 20')">Botón 20</button>
-        </div>
+        <section id="registro">
+            <h2>Registro a Clases Gratuitas</h2>
+            <form id="registro-form">
+                <label for="pais">Selecciona tu país:</label>
+                <select id="pais" required>
+                    <option value="" disabled selected>Selecciona tu país</option>
+                    <option value="Colombia" data-lada="+57">Colombia</option>
+                    <option value="México" data-lada="+52">México</option>
+                    <option value="Perú" data-lada="+51">Perú</option>
+                    <option value="Costa Rica" data-lada="+506">Costa Rica</option>
+                    <option value="Ecuador" data-lada="+593">Ecuador</option>
+                    <option value="Panamá" data-lada="+507">Panamá</option>
+                    <option value="Venezuela" data-lada="+58">Venezuela</option>
+                </select>
+                <label for="whatsapp">Número de WhatsApp:</label>
+                <input type="text" id="whatsapp" required placeholder="Escribe tu número sin el indicativo">
+                <button type="submit">Registrarse</button>
+            </form>
+        </section>
+
+        <section id="contacto">
+            <h2>Contacto</h2>
+            <p>Información sobre cómo contactarnos.</p>
+        </section>
+
+        <section id="verificacion">
+            <h2>Verificación de Identidad</h2>
+            <p>Esta sección no es visible a menos que se use el enlace de verificación.</p>
+        </section>
     </main>
 
-    <script src="script.js"></script>
+    <footer>
+        <p>&copy; 2024 Sinertegia Latam</p>
+    </footer>
+
+    <div id="chatbot-button">Chat</div>
+    <div id="chatbot-modal" style="display:none;">
+        <div>
+            <span id="close-chat">X</span>
+            <h3>Chatbot</h3>
+            <div id="chat-message"></div>
+            <input type="text" id="user-input" placeholder="Escribe tu mensaje...">
+            <button id="send-btn">Enviar</button>
+        </div>
+    </div>
 
 </body>
 </html>
