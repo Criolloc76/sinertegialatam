@@ -8,14 +8,23 @@
 </head>
 <body>
     <div class="container">
+        <!-- Menú de navegación -->
+        <nav class="navbar">
+            <ul>
+                <li><a href="#lead-form">Registro Clase Gratuita</a></li>
+                <li><a href="gallery.html">Galería Multimedia</a></li>
+                <li><a href="events.html">Calendario de Eventos</a></li>
+            </ul>
+        </nav>
+
         <!-- Contenido principal de la página -->
         <header>
             <h1>Bienvenidos a Sinergia LATAM</h1>
         </header>
 
         <main>
-            <section>
-                <h2>Registra tu número</h2>
+            <section id="lead-form">
+                <h2>Registra para la Clase Gratuita</h2>
                 <form id="lead-form">
                     <label for="country-select">País:</label>
                     <select id="country-select" required>
@@ -38,7 +47,7 @@
         </main>
 
         <!-- Botón flotante de WhatsApp -->
-        <a href="https://wa.me/521234567890" class="whatsapp-button" target="_blank">Chat con IA</a>
+        <a href="#" class="whatsapp-button" id="whatsapp-button">Chat con IA</a>
 
         <!-- Footer siempre al fondo de la página -->
         <footer>
