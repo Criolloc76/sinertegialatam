@@ -1,73 +1,63 @@
-* {
-    box-sizing: border-box;
+/* Asegúrate de que el body llene toda la pantalla */
+html, body {
+    height: 100%;
     margin: 0;
     padding: 0;
-}
-
-body {
     font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    color: #333;
 }
 
-header {
-    background-color: #ff4c4c;
-    color: #fff;
-    padding: 20px;
-    text-align: center;
-}
-
+/* Estilos para el contenedor principal */
 .container {
-    margin: 0 auto;
-    max-width: 600px;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Contenido del main */
+main {
+    flex: 1;
     padding: 20px;
-    background-color: #fff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #f9f9f9;
 }
 
-.lead-form-container h2 {
-    margin-bottom: 20px;
+/* Estilos para el footer */
+footer {
+    background-color: #f1f1f1;
+    text-align: center;
+    padding: 20px;
+    margin-top: auto;
 }
 
-input, select {
+h1, h2 {
+    color: #e74c3c; /* Rojo más suave */
+}
+
+form {
+    margin-top: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+input[type="tel"], select {
     width: 100%;
     padding: 10px;
-    margin: 10px 0;
-    border: 1px solid #ddd;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
     border-radius: 5px;
 }
 
 button {
-    width: 100%;
-    padding: 10px;
-    background-color: #ff4c4c;
-    color: #fff;
+    padding: 10px 20px;
+    background-color: #e74c3c;
+    color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
 }
 
 button:hover {
-    background-color: #d44040;
-}
-
-.chat-button {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-}
-
-.chat-button img {
-    width: 50px;
-    height: 50px;
-}
-
-footer {
-    background-color: #333;
-    color: #fff;
-    text-align: center;
-    padding: 10px;
-    position: absolute;
-    width: 100%;
-    bottom: 0;
+    background-color: #c0392b;
 }
