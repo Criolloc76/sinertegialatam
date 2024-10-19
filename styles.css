@@ -1,114 +1,127 @@
-body {
-    font-family: Arial, sans-serif;
-    background-color: #ffffff;
-    color: #333;
+/* Reset CSS */
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    background-color: #f9f9f9; /* Color de fondo claro y suave */
+    color: #333; /* Texto oscuro */
+}
+
+/* Estilo del encabezado */
 header {
-    background-color: #FF0000; /* Rojo */
+    background-color: #f44336; /* Un rojo más suave */
     color: white;
-    padding: 10px 0;
+    padding: 2rem 0;
     text-align: center;
 }
 
-nav ul {
-    list-style-type: none;
-    padding: 0;
+/* Contenedor central */
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto; /* Centrar el contenedor */
+    padding: 0 15px; /* Agregar margen a los lados */
 }
 
-nav ul li {
-    display: inline;
-    margin-right: 20px;
+/* Estilo de secciones */
+section {
+    background: white;
+    margin: 2rem 0;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
-main {
-    padding: 20px;
+/* Estilo de encabezados */
+h2 {
+    margin-bottom: 1rem;
+    color: #444; /* Color de encabezados más suave */
 }
 
+/* Estilo de botones */
+.btn {
+    background: #f44336; /* Un rojo más suave */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.btn:hover {
+    background: #d32f2f; /* Color de fondo del botón al pasar el mouse */
+}
+
+/* Estilo de formulario */
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-bottom: 0.5rem;
+}
+
+input[type="text"], select {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+}
+
+/* Estilo del contenedor de WhatsApp */
+.whatsapp-input {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+/* Estilo del botón flotante */
+#chat-flotante {
+    position: fixed;
+    bottom: 80px; /* Asegúrate de que no esté sobre el footer */
+    right: 20px;
+    background-color: #25D366; /* Color verde de WhatsApp */
+    border-radius: 50%;
+    padding: 15px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    z-index: 100; /* Asegúrate de que esté encima de otros elementos */
+}
+
+#chat-flotante a {
+    color: white;
+    font-size: 24px;
+}
+
+/* Estilo del footer */
 footer {
     text-align: center;
-    padding: 10px 0;
-    background-color: #FF0000; /* Rojo */
+    padding: 1rem 0;
+    background: #333;
     color: white;
     position: relative;
     bottom: 0;
     width: 100%;
 }
 
-#chatbot-button {
-    position: fixed;
-    bottom: 60px; /* Asegúrate de que no esté sobre el footer */
-    right: 20px;
-    background-color: #25D366; /* Verde de WhatsApp */
-    color: white;
-    border: none;
-    border-radius: 50%;
-    width: 50px;
-    height: 50px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    z-index: 100; /* Asegura que esté por encima de otros elementos */
-}
-
-#chatbot-modal {
-    position: fixed;
-    bottom: 100px; /* Asegúrate de que no esté sobre el footer */
-    right: 20px;
-    width: 300px;
-    background-color: white;
-    border: 1px solid #ccc;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    z-index: 1000;
-}
-
-#close-chat {
-    cursor: pointer;
-    float: right;
-}
-
-#chat-message {
-    padding: 10px;
-    border-bottom: 1px solid #ccc;
-    max-height: 150px;
-    overflow-y: auto;
-}
-
 /* Responsividad */
 @media (max-width: 600px) {
-    nav ul li {
-        display: block; /* Cambiar a bloque para móvil */
-        margin: 10px 0;
+    header, footer {
+        padding: 1rem;
     }
-
-    #chatbot-button {
-        width: 45px;
-        height: 45px;
+    
+    .container {
+        width: 95%; /* Ajuste de ancho en móvil */
+        padding: 0 10px; /* Reducción de padding en móvil */
     }
-
-    #chatbot-modal {
-        width: 90%; /* Ancho más adecuado para móviles */
-        left: 5%;
+    
+    #chat-flotante {
+        bottom: 70px; /* Ajustar el botón flotante en móviles */
     }
-
-    main {
-        padding: 10px;
-    }
-}
-
-form {
-    display: flex;
-    flex-direction: column;
-}
-
-form label, form select, form input, form button {
-    margin: 10px 0;
-}
-
-form select {
-    padding: 10px;
-    font-size: 16px;
 }
