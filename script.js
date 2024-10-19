@@ -1,114 +1,57 @@
-body {
-    font-family: Arial, sans-serif;
-    background-color: #ffffff;
-    color: #333;
-    margin: 0;
-    padding: 0;
-}
+document.getElementById('registro-form').addEventListener('submit', function(event) {
+    event.preventDefault();
+    
+    const whatsappInput = document.getElementById('whatsapp').value;
+    const paisSelect = document.getElementById('pais');
+    const selectedCountry = paisSelect.options[paisSelect.selectedIndex].value;
+    const lada = paisSelect.options[paisSelect.selectedIndex].dataset.lada;
+    const isValidWhatsApp = validateWhatsApp(whatsappInput, selectedCountry);
 
-header {
-    background-color: #FF0000; /* Rojo */
-    color: white;
-    padding: 10px 0;
-    text-align: center;
-}
-
-nav ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-nav ul li {
-    display: inline;
-    margin-right: 20px;
-}
-
-main {
-    padding: 20px;
-}
-
-footer {
-    text-align: center;
-    padding: 10px 0;
-    background-color: #FF0000; /* Rojo */
-    color: white;
-    position: relative;
-    bottom: 0;
-    width: 100%;
-}
-
-#chatbot-button {
-    position: fixed;
-    bottom: 60px; /* Asegúrate de que no esté sobre el footer */
-    right: 20px;
-    background-color: #25D366; /* Verde de WhatsApp */
-    color: white;
-    border: none;
-    border-radius: 50%;
-    width: 50px;
-    height: 50px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    z-index: 100; /* Asegura que esté por encima de otros elementos */
-}
-
-#chatbot-modal {
-    position: fixed;
-    bottom: 100px; /* Asegúrate de que no esté sobre el footer */
-    right: 20px;
-    width: 300px;
-    background-color: white;
-    border: 1px solid #ccc;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    z-index: 1000;
-}
-
-#close-chat {
-    cursor: pointer;
-    float: right;
-}
-
-#chat-message {
-    padding: 10px;
-    border-bottom: 1px solid #ccc;
-    max-height: 150px;
-    overflow-y: auto;
-}
-
-/* Responsividad */
-@media (max-width: 600px) {
-    nav ul li {
-        display: block; /* Cambiar a bloque para móvil */
-        margin: 10px 0;
+    if (isValidWhatsApp) {
+        alert('Te has registrado correctamente. ¡Gracias!');
+        // Aquí puedes agregar la lógica para enviar los datos a Google Sheets.
+    } else {
+        alert('Número de WhatsApp no válido para el país seleccionado (' + lada + ').');
     }
+});
 
-    #chatbot-button {
-        width: 45px;
-        height: 45px;
-    }
+function validateWhatsApp(number, country) {
+    // Validar el número de WhatsApp basado en el país
+    const countryDigits = {
+        'Colombia': 10,
+        'México': 10,
+        'Perú': 9,
+        'Costa Rica': 8,
+        'Ecuador': 9,
+        'Panamá': 7,
+        'Venezuela': 10,
+    };
 
-    #chatbot-modal {
-        width: 90%; /* Ancho más adecuado para móviles */
-        left: 5%;
-    }
-
-    main {
-        padding: 10px;
-    }
+    const expectedLength = countryDigits[country] || 10; // Por defecto, 10 dígitos
+    return number.length === expectedLength && /^\d+$/.test(number);
 }
 
-form {
-    display: flex;
-    flex-direction: column;
-}
+document.getElementById('chatbot-button').addEventListener('click', function() {
+    document.getElementById('chatbot-modal').style.display = 'block';
+});
 
-form label, form select, form input, form button {
-    margin: 10px 0;
-}
+document.getElementById('close-chat').addEventListener('click', function() {
+    document.getElementById('chatbot-modal').style.display = 'none';
+});
 
-form select {
-    padding: 10px;
-    font-size: 16px;
+document.getElementById('send-btn').addEventListener('click', function() {
+    const userInput = document.getElementById('user-input').value;
+    if (userInput) {
+        document.getElementById('chat-message').textContent = 'Tú: ' + userInput;
+        // Aquí puedes agregar la lógica para el chatbot interactivo.
+        document.getElementById('user-input').value = ''; // Limpiar el campo de entrada
+    }
+});
+
+// Cerrar el modal al hacer clic fuera de la ventana
+window.onclick = function(event) {
+    const modal = document.getElementById('chatbot-modal');
+    if (event.target === modal) {
+        modal.style.display = "none";
+    }
 }
