@@ -3,6 +3,10 @@ document.getElementById('lead-form').addEventListener('submit', function (e) {
 
     const countryCode = document.getElementById('country-select').value;
     let phoneNumber = document.getElementById('phone-number').value;
+    const validationMessage = document.getElementById('validation-message'); // Elemento para mostrar mensajes
+
+    // Limpia mensajes anteriores
+    validationMessage.textContent = '';
 
     // Si es México, verifica si el número empieza con "1"
     if (countryCode === "52") {
@@ -11,12 +15,13 @@ document.getElementById('lead-form').addEventListener('submit', function (e) {
         }
     }
 
-    // Validación simple para longitud del número según el país
+    // Validación para la longitud del número según el país
     if (isValidPhoneNumber(countryCode, phoneNumber)) {
-        alert(`Número registrado: +${countryCode}${phoneNumber}`);
-        // Aquí puedes enviar el número a tu servidor o a la hoja de Google
+        validationMessage.textContent = `Número registrado: +${countryCode}${phoneNumber}`;
+        validationMessage.style.color = 'green'; // Mensaje en verde si es válido
     } else {
-        alert('El número de teléfono no es válido.');
+        validationMessage.textContent = 'El número de teléfono no es válido.';
+        validationMessage.style.color = 'red'; // Mensaje en rojo si es inválido
     }
 });
 
