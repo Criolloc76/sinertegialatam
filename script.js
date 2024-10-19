@@ -1,110 +1,52 @@
-/* Reset CSS */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+document.addEventListener('DOMContentLoaded', () => {
+    const btnVerificar = document.getElementById('btn-verificar');
+    const formRegistro = document.getElementById('form-registro');
+    const paisSelect = document.getElementById('pais');
+    const numeroWhatsappInput = document.getElementById('numero-whatsapp');
+    const mensajeRegistro = document.getElementById('mensaje-registro');
 
-body {
-    font-family: 'Arial', sans-serif;
-    line-height: 1.6;
-    background-color: #f9f9f9; /* Color de fondo claro y suave */
-    color: #333; /* Texto oscuro */
-}
+    // Manejar la verificación de identidad
+    btnVerificar.addEventListener('click', () => {
+        // Simulación de verificación de identidad
+        document.getElementById('mensaje-verificacion').style.display = 'block';
+        setTimeout(() => {
+            document.getElementById('mensaje-verificacion').style.display = 'none';
+            alert('Identidad verificada con éxito.');
+        }, 2000);
+    });
 
-/* Estilo del encabezado */
-header {
-    background-color: #f44336; /* Un rojo más suave */
-    color: white;
-    padding: 2rem 0;
-    text-align: center;
-}
+    // Validación del número de WhatsApp al enviar el formulario
+    formRegistro.addEventListener('submit', (event) => {
+        event.preventDefault(); // Evita el envío del formulario por defecto
+        const paisCodigo = paisSelect.value;
+        const numeroWhatsapp = numeroWhatsappInput.value;
 
-/* Contenedor central */
-.container {
-    width: 90%;
-    max-width: 1200px;
-    margin: auto;
-}
+        // Verificación de longitud del número según el país seleccionado
+        if (validarNumeroWhatsApp(paisCodigo, numeroWhatsapp)) {
+            mensajeRegistro.style.display = 'block';
+            mensajeRegistro.textContent = 'Registro exitoso. ¡Te contactaremos pronto!';
+            // Aquí puedes agregar lógica para enviar el formulario a un servidor
+        } else {
+            mensajeRegistro.style.display = 'block';
+            mensajeRegistro.textContent = 'Número de WhatsApp no válido. Por favor verifica e intenta de nuevo.';
+        }
+    });
 
-/* Estilo de secciones */
-section {
-    background: white;
-    margin: 2rem 0;
-    padding: 2rem;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
+    // Función para validar el número de WhatsApp
+    function validarNumeroWhatsApp(codigoPais, numero) {
+        // Longitudes esperadas según el país (números sin lada)
+        const longitudesEsperadas = {
+            "52": 10, // México
+            "57": 10, // Colombia
+            "51": 9,  // Perú
+            "506": 8, // Costa Rica
+            "593": 9, // Ecuador
+            "507": 7, // Panamá
+            "58": 10  // Venezuela
+        };
 
-/* Estilo de encabezados */
-h2 {
-    margin-bottom: 1rem;
-    color: #444; /* Color de encabezados más suave */
-}
-
-/* Estilo de botones */
-.btn {
-    background: #f44336; /* Un rojo más suave */
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background 0.3s ease;
-}
-
-.btn:hover {
-    background: #d32f2f; /* Color de fondo del botón al pasar el mouse */
-}
-
-/* Estilo de formulario */
-form {
-    display: flex;
-    flex-direction: column;
-}
-
-label {
-    margin-bottom: 0.5rem;
-}
-
-input[type="text"], select {
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    margin-bottom: 1rem;
-}
-
-/* Estilo del contenedor de WhatsApp */
-.whatsapp-input {
-    display: flex;
-    align-items: center;
-    margin-bottom: 1rem;
-}
-
-/* Estilo del botón flotante */
-#chat-flotante {
-    position: fixed;
-    bottom: 80px; /* Asegúrate de que no esté sobre el footer */
-    right: 20px;
-    background-color: #25D366; /* Color verde de WhatsApp */
-    border-radius: 50%;
-    padding: 15px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-    z-index: 100; /* Asegúrate de que esté encima de otros elementos */
-}
-
-#chat-flotante a {
-    color: white;
-    font-size: 24px;
-}
-
-/* Estilo del footer */
-footer {
-    text-align: center;
-    padding: 1rem 0;
-    background: #333;
-    color: white;
-    position: relative;
-    bottom: 0;
-    width: 100%;
-}
+        // Comparar la longitud del número ingresado
+        const longitudEsperada = longitudesEsperadas[codigoPais];
+        return numero.length === longitudEsperada;
+    }
+});
