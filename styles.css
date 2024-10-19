@@ -1,127 +1,63 @@
-/* Reset CSS */
-* {
+/* Asegúrate de que el body llene toda la pantalla */
+html, body {
+    height: 100%;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    font-family: Arial, sans-serif;
 }
 
-body {
-    font-family: 'Arial', sans-serif;
-    line-height: 1.6;
-    background-color: #f9f9f9; /* Color de fondo claro y suave */
-    color: #333; /* Texto oscuro */
-}
-
-/* Estilo del encabezado */
-header {
-    background-color: #f44336; /* Un rojo más suave */
-    color: white;
-    padding: 2rem 0;
-    text-align: center;
-}
-
-/* Contenedor central */
+/* Estilos para el contenedor principal */
 .container {
-    width: 90%;
-    max-width: 1200px;
-    margin: 0 auto; /* Centrar el contenedor */
-    padding: 0 15px; /* Agregar margen a los lados */
-}
-
-/* Estilo de secciones */
-section {
-    background: white;
-    margin: 2rem 0;
-    padding: 2rem;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
-
-/* Estilo de encabezados */
-h2 {
-    margin-bottom: 1rem;
-    color: #444; /* Color de encabezados más suave */
-}
-
-/* Estilo de botones */
-.btn {
-    background: #f44336; /* Un rojo más suave */
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background 0.3s ease;
-}
-
-.btn:hover {
-    background: #d32f2f; /* Color de fondo del botón al pasar el mouse */
-}
-
-/* Estilo de formulario */
-form {
+    min-height: 100%;
     display: flex;
     flex-direction: column;
 }
 
-label {
-    margin-bottom: 0.5rem;
+/* Contenido del main */
+main {
+    flex: 1;
+    padding: 20px;
+    background-color: #f9f9f9;
 }
 
-input[type="text"], select {
+/* Estilos para el footer */
+footer {
+    background-color: #f1f1f1;
+    text-align: center;
+    padding: 20px;
+    margin-top: auto;
+}
+
+h1, h2 {
+    color: #e74c3c; /* Rojo más suave */
+}
+
+form {
+    margin-top: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+input[type="tel"], select {
+    width: 100%;
     padding: 10px;
+    margin-bottom: 20px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    margin-bottom: 1rem;
 }
 
-/* Estilo del contenedor de WhatsApp */
-.whatsapp-input {
-    display: flex;
-    align-items: center;
-    margin-bottom: 1rem;
-}
-
-/* Estilo del botón flotante */
-#chat-flotante {
-    position: fixed;
-    bottom: 80px; /* Asegúrate de que no esté sobre el footer */
-    right: 20px;
-    background-color: #25D366; /* Color verde de WhatsApp */
-    border-radius: 50%;
-    padding: 15px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-    z-index: 100; /* Asegúrate de que esté encima de otros elementos */
-}
-
-#chat-flotante a {
+button {
+    padding: 10px 20px;
+    background-color: #e74c3c;
     color: white;
-    font-size: 24px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
-/* Estilo del footer */
-footer {
-    text-align: center;
-    padding: 1rem 0;
-    background: #333;
-    color: white;
-    position: relative;
-    bottom: 0;
-    width: 100%;
-}
-
-/* Responsividad */
-@media (max-width: 600px) {
-    header, footer {
-        padding: 1rem;
-    }
-    
-    .container {
-        width: 95%; /* Ajuste de ancho en móvil */
-        padding: 0 10px; /* Reducción de padding en móvil */
-    }
-    
-    #chat-flotante {
-        bottom: 70px; /* Ajustar el botón flotante en móviles */
-    }
+button:hover {
+    background-color: #c0392b;
 }
