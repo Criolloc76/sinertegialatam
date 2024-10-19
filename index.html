@@ -3,51 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Sinertegia LATAM - Landing Page</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Landing Sinergia LATAM</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-
-    <header>
-        <h1>Bienvenido a Sinertegia LATAM</h1>
-    </header>
-
     <div class="container">
-        <div class="lead-form-container">
-            <h2>Registra tus datos para clases gratuitas</h2>
-            <form id="lead-form">
-                <label for="country-select">País:</label>
-                <select id="country-select" required>
-                    <option value="">Seleccione un país</option>
-                    <option value="521">México (+521)</option>
-                    <option value="57">Colombia (+57)</option>
-                    <option value="51">Perú (+51)</option>
-                    <option value="506">Costa Rica (+506)</option>
-                    <option value="593">Ecuador (+593)</option>
-                    <option value="507">Panamá (+507)</option>
-                    <option value="58">Venezuela (+58)</option>
-                </select>
-                
-                <label for="whatsapp-number">Número de WhatsApp:</label>
-                <input type="tel" id="whatsapp-number" placeholder="Número de WhatsApp" required>
+        <!-- Contenido principal de la página -->
+        <header>
+            <h1>Bienvenidos a Sinergia LATAM</h1>
+        </header>
 
-                <p id="validation-message"></p>
+        <main>
+            <section>
+                <h2>Registra tu número</h2>
+                <form id="lead-form">
+                    <label for="country-select">País:</label>
+                    <select id="country-select" required>
+                        <option value="">Seleccione un país</option>
+                        <option value="52">México (+52)</option>
+                        <option value="57">Colombia (+57)</option>
+                        <option value="51">Perú (+51)</option>
+                        <!-- Agrega más países según sea necesario -->
+                    </select>
 
-                <button type="submit">Registrar</button>
-            </form>
-        </div>
+                    <label for="phone-number">Número de WhatsApp:</label>
+                    <input type="tel" id="phone-number" placeholder="Ej: 1234567890" required>
+
+                    <button type="submit">Registrar</button>
+                </form>
+            </section>
+        </main>
+
+        <!-- Footer siempre al fondo de la página -->
+        <footer>
+            <p>© 2024 Sinergia LATAM. Todos los derechos reservados.</p>
+        </footer>
     </div>
-
-    <div class="chat-button">
-        <a href="#" id="chat-whatsapp">
-            <img src="whatsapp-icon.png" alt="WhatsApp">
-        </a>
-    </div>
-
-    <footer>
-        <p>Sinertegia LATAM &copy; 2024</p>
-    </footer>
 
     <script src="script.js"></script>
 </body>
