@@ -12,37 +12,41 @@
 
     <!-- Encabezado -->
     <header>
-        <h1>Sinertegia Latam</h1>
-        <p>Bienvenido a nuestra plataforma de verificación y registro</p>
+        <div class="container">
+            <h1>Sinertegia Latam</h1>
+            <p>Bienvenido a nuestra plataforma de verificación y registro</p>
+        </div>
     </header>
 
     <!-- Sección de Verificación de Identidad -->
-    <section id="verificacion">
+    <section id="verificacion" class="container">
         <h2>Verificación de Identidad</h2>
-        <button id="btn-verificar">Verificar Identidad</button>
+        <button id="btn-verificar" class="btn">Verificar Identidad</button>
         <p id="mensaje-verificacion" style="display:none;">Se está verificando la identidad del miembro...</p>
     </section>
 
     <!-- Sección de Registro a Clases Gratuitas -->
-    <section id="registro">
+    <section id="registro" class="container">
         <h2>Registro a Clases Gratuitas</h2>
         <form id="form-registro">
             <label for="nombre">Nombre:</label>
             <input type="text" id="nombre" required>
             
             <label for="whatsapp">Número de WhatsApp:</label>
-            <select id="pais">
-                <option value="52">México (+52)</option>
-                <option value="57">Colombia (+57)</option>
-                <option value="51">Perú (+51)</option>
-                <option value="506">Costa Rica (+506)</option>
-                <option value="593">Ecuador (+593)</option>
-                <option value="507">Panamá (+507)</option>
-                <option value="58">Venezuela (+58)</option>
-            </select>
-            <input type="text" id="numero-whatsapp" placeholder="Número sin lada" required>
+            <div class="whatsapp-input">
+                <select id="pais">
+                    <option value="52">México (+52)</option>
+                    <option value="57">Colombia (+57)</option>
+                    <option value="51">Perú (+51)</option>
+                    <option value="506">Costa Rica (+506)</option>
+                    <option value="593">Ecuador (+593)</option>
+                    <option value="507">Panamá (+507)</option>
+                    <option value="58">Venezuela (+58)</option>
+                </select>
+                <input type="text" id="numero-whatsapp" placeholder="Número sin lada" required>
+            </div>
 
-            <button type="submit">Registrar</button>
+            <button type="submit" class="btn">Registrar</button>
         </form>
         <p id="mensaje-registro" style="display:none;"></p>
     </section>
