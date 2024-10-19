@@ -19,22 +19,43 @@ html, body {
     padding: 10px;
 }
 
-.navbar ul {
-    list-style: none; /* Eliminar puntos de la lista */
-    padding: 0;
-    margin: 0;
-    display: flex; /* Muestra en línea */
-    justify-content: center; /* Centra los elementos del menú */
+.dropdown {
+    position: relative;
+    display: inline-block;
 }
 
-.navbar li {
-    margin: 0 15px; /* Espacio entre elementos */
+.dropbtn {
+    background-color: #e74c3c; /* Color del botón */
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
 }
 
-.navbar a {
-    color: white; /* Color del texto */
+.dropdown-content {
+    display: none; /* Ocultar por defecto */
+    position: absolute;
+    background-color: #f9f9f9; /* Color de fondo del menú desplegable */
+    min-width: 160px; /* Ancho mínimo del menú */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Sombra */
+    z-index: 1; /* Mantener por encima */
+}
+
+.dropdown-content a {
+    color: black; /* Color del texto */
+    padding: 12px 16px; /* Espaciado interno */
     text-decoration: none; /* Sin subrayado */
-    font-weight: bold; /* Texto en negrita */
+    display: block; /* Hacer que ocupen el bloque */
+}
+
+.dropdown-content a:hover {
+    background-color: #f1f1f1; /* Color de fondo al pasar el ratón */
+}
+
+/* Mostrar el contenido al pasar el ratón */
+.dropdown:hover .dropdown-content {
+    display: block; /* Mostrar el menú desplegable */
 }
 
 /* Estilos para el encabezado */
