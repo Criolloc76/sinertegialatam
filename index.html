@@ -5,12 +5,21 @@
 </head>
 <body>
     <form id="contactForm">
+        <label for="id">ID:</label><br>
+        <input type="text" id="id" name="id" required><br>
+
         <label for="nombre">Nombre:</label><br>
         <input type="text" id="nombre" name="nombre" required><br>
+
+        <label for="pais">País:</label><br>
+        <input type="text" id="pais" name="pais" required><br>
+
         <label for="email">Email:</label><br>
         <input type="email" id="email" name="email" required><br>
-        <label for="mensaje">Mensaje:</label><br>
-        <textarea id="mensaje" name="mensaje" required></textarea><br>
+
+        <label for="telefono">Teléfono:</label><br>
+        <input type="text" id="telefono" name="telefono" required><br>
+
         <input type="submit" value="Enviar">
     </form>
 
@@ -18,7 +27,7 @@
         document.getElementById("contactForm").onsubmit = function(event) {
             event.preventDefault();
             var formData = new FormData(this);
-            fetch("https://script.google.com/macros/s/AKfycbzWJ48_4j_yvuatbyYf_Rs5qy9DecuDvalCGAvaGnJqSWDdegZSfbUarF3Uhe9C1TgD4A/exec", {
+            fetch("URL_DE_TU_SCRIPT", {
                 method: "POST",
                 body: formData
             }).then(response => response.text()).then(data => {
