@@ -12,7 +12,7 @@ document.getElementById('lead-form').addEventListener('submit', function (e) {
     const countryCode = document.getElementById('country-select').value;
     let phoneNumber = document.getElementById('phone-number').value;
 
-    // Ajustar el formato de número para México (agregar 1 si no lo tiene y usar los últimos 10 dígitos)
+    // Ajustar el formato de número para México
     if (countryCode === "52") {
         phoneNumber = phoneNumber.slice(-10);  // Tomar los últimos 10 dígitos
         if (!phoneNumber.startsWith("1")) {
@@ -37,13 +37,18 @@ document.getElementById('lead-form').addEventListener('submit', function (e) {
             },
             body: JSON.stringify(data)
         })
-        .then(response => response.json())
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`Error en la respuesta del servidor: ${response.status}`);
+            }
+            return response.json();
+        })
         .then(result => {
-            alert('Registro exitoso. ¡Gracias!');
+            alert(result.message);
             document.getElementById('lead-form').reset();
         })
         .catch(error => {
-            alert('Hubo un error al enviar los datos. Inténtalo nuevamente.');
+            alert(`Hubo un error al enviar los datos: ${error.message}`);
             console.error('Error:', error);
         });
     } else {
