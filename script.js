@@ -1,36 +1,37 @@
-function doPost(e) {
-    var sheet = SpreadsheetApp.openById("1BwMWKJ9FltYEcRWs5_FOXU9deQfnesTHMZ9Alp8XmOI").getSheetByName("RegWEB");
-    
-    // Parsear datos JSON de la solicitud
-    var data = JSON.parse(e.postData.contents);
-    
-    // Agregar los datos a la hoja
-    sheet.appendRow([new Date(), data.name, data.country, data.email, data.phone]);
-    
-    // Crear la respuesta
-    var jsonResponse = JSON.stringify({ "status": "success", "message": "¡Datos agregados exitosamente!" });
-    
-    // Establecer encabezados CORS
-    var headers = {
-        "Access-Control-Allow-Origin": "*", // Permitir cualquier origen
-        "Access-Control-Allow-Methods": "POST, GET, OPTIONS", // Permitir ciertos métodos HTTP
-        "Access-Control-Allow-Headers": "Content-Type" // Permitir encabezados específicos
-    };
-    
-    return ContentService.createTextOutput(jsonResponse)
-                         .setMimeType(ContentService.MimeType.JSON)
-                         .setHeaders(headers); // Agregar encabezados a la respuesta
-}
+document.getElementById('lead-form').addEventListener('submit', function(event) {
+    event.preventDefault(); // Evitar el envío normal del formulario
 
-function doOptions(e) {
-    // Establecer encabezados CORS para la solicitud preflight
-    var headers = {
-        "Access-Control-Allow-Origin": "*",
-        "Access-Control-Allow-Methods": "POST, GET, OPTIONS",
-        "Access-Control-Allow-Headers": "Content-Type"
+    // Obtener datos del formulario
+    var name = document.getElementById('name').value;
+    var email = document.getElementById('email').value;
+    var country = document.getElementById('country-select').value;
+    var phone = document.getElementById('phone-number').value;
+
+    // Crear objeto de datos a enviar
+    var data = {
+        name: name,
+        email: email,
+        country: country,
+        phone: phone
     };
-    
-    return ContentService.createTextOutput()
-                         .setMimeType(ContentService.MimeType.TEXT)
-                         .setHeaders(headers);
-}
+
+    // Hacer la solicitud fetch a la API del script
+    fetch('https://script.google.com/macros/s/AKfycbw3h2___Z_wWrnDiNQjKpmlSv6tAHWhkLC9a7F26B-woo5zdODDZk9Jq4K-7XSTAd9H/exec', {
+        method: 'POST',
+        body: JSON.stringify(data),
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+    .then(response => response.json())
+    .then(result => {
+        // Mostrar el resultado en el formulario
+        document.getElementById('form-response').innerText = result.message;
+        // Limpiar el formulario
+        document.getElementById('lead-form').reset();
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        document.getElementById('form-response').innerText = 'Error al enviar los datos. Inténtalo de nuevo.';
+    });
+});
