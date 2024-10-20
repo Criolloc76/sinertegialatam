@@ -1,62 +1,31 @@
 <!DOCTYPE html>
-<html lang="es">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Landing Sinergia LATAM - Clase Gratuita</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Formulario de Contacto</title>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <nav>
-                <div class="menu-icon" id="menu-toggle">&#9776;</div>
-                <ul class="menu" id="menu">
-                    <li><a href="#">Inicio</a></li>
-                    <li><a href="#">Galería Multimedia</a></li>
-                    <li><a href="#">Calendario de Eventos</a></li>
-                </ul>
-            </nav>
-            <h1>Bienvenidos a Sinergia LATAM</h1>
-        </header>
+    <form id="contactForm">
+        <label for="nombre">Nombre:</label><br>
+        <input type="text" id="nombre" name="nombre" required><br>
+        <label for="email">Email:</label><br>
+        <input type="email" id="email" name="email" required><br>
+        <label for="mensaje">Mensaje:</label><br>
+        <textarea id="mensaje" name="mensaje" required></textarea><br>
+        <input type="submit" value="Enviar">
+    </form>
 
-        <main>
-            <section>
-                <h2>Regístrate para una Clase Gratuita</h2>
-                <form id="lead-form">
-                    <label for="name">Nombre:</label>
-                    <input type="text" id="name" placeholder="Tu nombre" required>
-
-                    <label for="email">Email:</label>
-                    <input type="email" id="email" placeholder="Tu correo electrónico" required>
-
-                    <label for="country-select">País:</label>
-                    <select id="country-select" required>
-                        <option value="">Seleccione un país</option>
-                        <option value="52">México (+52)</option>
-                        <option value="57">Colombia (+57)</option>
-                        <option value="51">Perú (+51)</option>
-                    </select>
-
-                    <label for="phone-number">Número de WhatsApp:</label>
-                    <input type="tel" id="phone-number" placeholder="Ej: 1234567890" required>
-
-                    <button type="submit">Registrar</button>
-                </form>
-                <div id="form-response"></div> <!-- Para mostrar el resultado de la respuesta -->
-            </section>
-        </main>
-
-        <footer>
-            <p>© 2024 Sinergia LATAM. Todos los derechos reservados.</p>
-        </footer>
-
-        <a href="#" id="whatsapp-button" class="whatsapp-float" title="Bot de IA de Sinergia LATAM">
-            <img src="whatsapp-icon.png" alt="WhatsApp" />
-        </a>
-
-    </div>
-
-    <script src="script.js"></script>
+    <script>
+        document.getElementById("contactForm").onsubmit = function(event) {
+            event.preventDefault();
+            var formData = new FormData(this);
+            fetch("https://script.google.com/macros/s/AKfycbzWJ48_4j_yvuatbyYf_Rs5qy9DecuDvalCGAvaGnJqSWDdegZSfbUarF3Uhe9C1TgD4A/exec", {
+                method: "POST",
+                body: formData
+            }).then(response => response.text()).then(data => {
+                alert(data);
+                this.reset(); // Limpia el formulario después de enviar
+            });
+        };
+    </script>
 </body>
 </html>
