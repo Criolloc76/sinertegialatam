@@ -51,16 +51,9 @@ function isValidPhoneNumber(countryCode, phoneNumber) {
 
     return phoneNumber.length === phoneLengths[countryCode];
 }
-function doPost(e) {
-  const sheet = SpreadsheetApp.openById("1BwMWKJ9FltYEcRWs5_FOXU9deQfnesTHMZ9Alp8XmOI").getSheetByName("RegWEB");
-  const data = e.parameter;
 
-  // Generar un ID automático basado en la fila
-  const lastRow = sheet.getLastRow();
-  const newID = lastRow + 1;
-
-  // Agregar una nueva fila con los datos recibidos
-  sheet.appendRow([newID, data.nombre, data.pais, data.email, data.telefono]);
-
-  return ContentService.createTextOutput("Registro exitoso");
-}
+// Funcionalidad para el botón flotante de WhatsApp
+document.getElementById('chatbot-icon').addEventListener('click', function () {
+    alert('Hola! Soy el Bot con IA de Sinergia LATAM. ¿En qué te puedo ayudar hoy?');
+    window.open('https://wa.me/YOUR_PHONE_NUMBER', '_blank');
+});
