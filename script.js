@@ -1,40 +1,66 @@
 document.getElementById('lead-form').addEventListener('submit', function (e) {
-    e.preventDefault();
+    e.preventDefault(); // Evita el comportamiento predeterminado del formulario
 
-    // Obtener los datos del formulario
-    const nombre = document.getElementById('nombre').value;
-    const pais = document.getElementById('country-select').value;
+    const countryCode = document.getElementById('country-select').value;
+    let phoneNumber = document.getElementById('phone-number').value;
+    const name = document.getElementById('name').value;
     const email = document.getElementById('email').value;
-    let telefono = document.getElementById('telefono').value;
 
-    // Validar y ajustar el número de teléfono para México
-    if (pais === '52') {
-        telefono = '521' + telefono.slice(-10); // Asegura que comience con 521 y toma los últimos 10 dígitos
+    // Ajuste especial para México, asegurando que el número tenga "521" y 10 dígitos
+    if (countryCode === "52") {
+        phoneNumber = "521" + phoneNumber.slice(-10); // Aseguramos que tome solo los últimos 10 dígitos
     }
 
-    const formData = new FormData();
-    formData.append('nombre', nombre);
-    formData.append('pais', pais);
-    formData.append('email', email);
-    formData.append('telefono', telefono);
+    // Validar el número de teléfono según el país
+    if (isValidPhoneNumber(countryCode, phoneNumber)) {
+        const formData = {
+            nombre: name,
+            pais: countryCode,
+            email: email,
+            telefono: phoneNumber
+        };
 
-    // Asegúrate de haber reemplazado la URL de Apps Script correcta aquí
-    fetch('TU_URL_DE_APPS_SCRIPT', {
-        method: 'POST',
-        body: formData
-    })
-    .then(response => response.text())
-    .then(data => {
-        alert("Registro exitoso.");
-    })
-    .catch(error => {
-        console.error('Error:', error);
-        alert("Ocurrió un error al registrar los datos.");
-    });
+        // Enviar datos a Google Sheets
+        fetch('https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            body: new URLSearchParams(formData)
+        }).then(response => {
+            alert('Registro exitoso');
+        }).catch(error => {
+            alert('Error en el registro, intente nuevamente.');
+            console.error('Error:', error);
+        });
+    } else {
+        alert('El número de teléfono no es válido.');
+    }
 });
 
-// Función del bot de WhatsApp
-function whatsappBot() {
-    alert('¡Hola! Soy el bot con IA de Sinergia LATAM. ¿En qué puedo ayudarte hoy?');
-    window.open('https://wa.me/521XXXXXXXXXX'); // Reemplaza con tu número de WhatsApp
+function isValidPhoneNumber(countryCode, phoneNumber) {
+    const phoneLengths = {
+        "52": 12, // México con el "521" incluido
+        "57": 10, // Colombia
+        "51": 9,  // Perú
+        "54": 10, // Argentina
+        "55": 11, // Brasil
+        "1": 10,  // USA y Canadá
+        // Agrega más países y sus respectivas longitudes
+    };
+
+    return phoneNumber.length === phoneLengths[countryCode];
+}
+function doPost(e) {
+  const sheet = SpreadsheetApp.openById("1BwMWKJ9FltYEcRWs5_FOXU9deQfnesTHMZ9Alp8XmOI").getSheetByName("RegWEB");
+  const data = e.parameter;
+
+  // Generar un ID automático basado en la fila
+  const lastRow = sheet.getLastRow();
+  const newID = lastRow + 1;
+
+  // Agregar una nueva fila con los datos recibidos
+  sheet.appendRow([newID, data.nombre, data.pais, data.email, data.telefono]);
+
+  return ContentService.createTextOutput("Registro exitoso");
 }
