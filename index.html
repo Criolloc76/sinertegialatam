@@ -8,20 +8,23 @@
 </head>
 <body>
     <div class="container">
-        <!-- Menú con diseño mejorado -->
-        <nav class="menu">
-            <ul>
-                <li><a href="#">Inicio</a></li>
-                <li><a href="#">Galería Multimedia</a></li>
-                <li><a href="#">Calendario de Eventos</a></li>
-            </ul>
-        </nav>
-
-        <!-- Contenido principal de la página -->
+        <!-- Header con menú desplegable -->
         <header>
+            <div class="menu-toggle">
+                <input type="checkbox" id="menu-checkbox">
+                <label for="menu-checkbox" class="menu-icon">&#9776;</label>
+                <nav class="menu">
+                    <ul>
+                        <li><a href="#">Inicio</a></li>
+                        <li><a href="#">Galería Multimedia</a></li>
+                        <li><a href="#">Calendario de Eventos</a></li>
+                    </ul>
+                </nav>
+            </div>
             <h1>Bienvenidos a Sinergia LATAM</h1>
         </header>
 
+        <!-- Contenido principal de la página -->
         <main>
             <section class="form-container">
                 <h2>Regístrate para una Clase Gratuita</h2>
@@ -35,7 +38,6 @@
                         <option value="52">México (+52)</option>
                         <option value="57">Colombia (+57)</option>
                         <option value="51">Perú (+51)</option>
-                        <!-- Agrega más países si es necesario -->
                     </select>
 
                     <label for="email">Email:</label>
@@ -49,13 +51,18 @@
             </section>
         </main>
 
-        <!-- Footer siempre al fondo de la página -->
+        <!-- Footer -->
         <footer>
             <p>© 2024 Sinergia LATAM. Todos los derechos reservados.</p>
         </footer>
+
+        <!-- Botón flotante de WhatsApp -->
+        <a href="#" class="whatsapp-float" onclick="whatsappBot()">
+            <img src="whatsapp-icon.png" alt="WhatsApp" />
+        </a>
     </div>
 
-    <!-- Script para manejar la lógica del formulario -->
+    <!-- Script para manejar el formulario y WhatsApp Bot -->
     <script src="script.js"></script>
 </body>
 </html>
