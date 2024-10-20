@@ -21,7 +21,7 @@ document.getElementById('lead-form').addEventListener('submit', function (e) {
         };
 
         // Enviar datos a Google Sheets
-        fetch('https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec', {
+        fetch('https://script.google.com/macros/s/AKfycbyCCsp9AxdkYmGDvyOXU3ye0D5c5G10AWofBXYKGYFZzdrGCHsTwJ4c3dnJnMl808MGXA/exec', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded'
