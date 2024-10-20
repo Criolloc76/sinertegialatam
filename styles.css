@@ -1,56 +1,89 @@
+/* Asegúrate de que el body llene toda la pantalla */
 html, body {
     height: 100%;
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
-    background-color: #f9f9f9;
 }
 
+/* Contenedor principal */
+.container {
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Estilo del header y menú */
 header {
     background-color: #e74c3c;
-    padding: 20px;
-    text-align: center;
     color: white;
-}
-
-h1 {
-    margin: 0;
-    font-size: 2rem;
+    padding: 10px;
+    text-align: center;
 }
 
 nav {
-    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-nav ul.menu {
+.menu-icon {
+    display: none;
+    cursor: pointer;
+}
+
+.menu {
     list-style: none;
     padding: 0;
+    margin: 0;
     display: flex;
-    justify-content: center;
+    gap: 20px;
 }
 
-nav ul.menu li {
-    margin: 0 15px;
-}
-
-nav ul.menu li a {
+.menu li a {
     color: white;
     text-decoration: none;
     font-weight: bold;
 }
 
-nav ul.menu li a:hover {
+.menu li a:hover {
     text-decoration: underline;
 }
 
-/* Formulario */
-.form-section {
-    max-width: 600px;
-    margin: 50px auto;
-    background-color: #fff;
+/* Responsive para menú desplegable en móviles */
+@media (max-width: 768px) {
+    .menu {
+        display: none;
+        flex-direction: column;
+        background-color: #e74c3c;
+    }
+
+    .menu-icon {
+        display: block;
+        font-size: 30px;
+        color: white;
+    }
+
+    .menu.show {
+        display: flex;
+    }
+}
+
+/* Estilos para el main */
+main {
+    flex: 1;
+    background-color: #f9f9f9;
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilo del formulario */
+form {
+    margin-top: 20px;
 }
 
 label {
@@ -65,11 +98,9 @@ input[type="text"], input[type="email"], input[type="tel"], select {
     margin-bottom: 20px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    box-sizing: border-box;
 }
 
 button {
-    width: 100%;
     padding: 10px 20px;
     background-color: #e74c3c;
     color: white;
@@ -82,25 +113,28 @@ button:hover {
     background-color: #c0392b;
 }
 
-/* Estilo para el footer */
+/* Estilo del footer */
 footer {
     background-color: #f1f1f1;
     text-align: center;
     padding: 20px;
-    position: absolute;
-    width: 100%;
-    bottom: 0;
 }
 
+/* Estilo del botón de WhatsApp */
 .whatsapp-float {
     position: fixed;
     bottom: 20px;
     right: 20px;
-    z-index: 100;
+    width: 60px;
+    height: 60px;
+    background-color: #25d366;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .whatsapp-float img {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
+    width: 40px;
+    height: 40px;
 }
