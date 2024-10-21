@@ -32,7 +32,6 @@
       form.addEventListener('submit', function(e) {
         e.preventDefault(); // Evita que se recargue la página
 
-        // Construye los datos en formato de URL
         const formData = new URLSearchParams();
         formData.append('id', document.getElementById('id').value);
         formData.append('nombre', document.getElementById('nombre').value);
@@ -40,12 +39,9 @@
         formData.append('email', document.getElementById('email').value);
         formData.append('telefono', document.getElementById('telefono').value);
 
-        fetch('https://script.google.com/macros/s/AKfycbzWJ48_4j_yvuatbyYf_Rs5qy9DecuDvalCGAvaGnJqSWDdegZSfbUarF3Uhe9C1TgD4A/exec', {
+        fetch('https://script.google.com/macros/s/AKfycbyCCsp9AxdkYmGDvyOXU3ye0D5c5G10AWofBXYKGYFZzdrGCHsTwJ4c3dnJnMl808MGXA/exec', {
           method: 'POST',
-          headers: {
-            'Content-Type': 'application/x-www-form-urlencoded' // Importante
-          },
-          body: formData.toString() // Enviar los datos como una cadena
+          body: formData.toString()
         })
         .then(response => response.json())
         .then(data => {
@@ -54,7 +50,7 @@
             alert('Datos enviados correctamente');
             form.reset(); // Limpia el formulario después de enviar los datos
           } else {
-            alert('Hubo un error al enviar los datos');
+            alert('Hubo un error al enviar los datos: ' + data.message);
           }
         })
         .catch(error => {
