@@ -3,27 +3,56 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulario de Contacto</title>
-    <script src="script.js" defer></script>
+    <title>Formulario de Registro</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        input, select, button {
+            display: block;
+            margin-bottom: 10px;
+            padding: 10px;
+            width: 300px;
+        }
+        button {
+            cursor: pointer;
+        }
+        #form-response {
+            margin-top: 20px;
+            color: green;
+        }
+    </style>
 </head>
 <body>
-    <form id="contactForm">
-        <label for="id">ID:</label><br>
-        <input type="text" id="id" name="id" required><br>
+    <h1>Formulario de Registro</h1>
+    <form id="lead-form">
+        <label for="id">ID:</label>
+        <input type="text" id="id" name="id" required>
 
-        <label for="nombre">Nombre:</label><br>
-        <input type="text" id="nombre" name="nombre" required><br>
+        <label for="name">Nombre:</label>
+        <input type="text" id="name" name="name" required>
 
-        <label for="pais">País:</label><br>
-        <input type="text" id="pais" name="pais" required><br>
+        <label for="country-select">País:</label>
+        <select id="country-select" name="country" required>
+            <option value="">Seleccione un país</option>
+            <option value="Colombia">Colombia</option>
+            <option value="México">México</option>
+            <option value="Argentina">Argentina</option>
+            <!-- Agrega más opciones según sea necesario -->
+        </select>
 
-        <label for="email">Email:</label><br>
-        <input type="email" id="email" name="email" required><br>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
 
-        <label for="telefono">Teléfono:</label><br>
-        <input type="text" id="telefono" name="telefono" required><br>
+        <label for="phone-number">Teléfono:</label>
+        <input type="tel" id="phone-number" name="phone" required>
 
-        <input type="submit" value="Enviar">
+        <button type="submit">Enviar</button>
     </form>
+
+    <div id="form-response"></div>
+
+    <script src="script.js"></script> <!-- Vinculamos el archivo JavaScript -->
 </body>
 </html>
