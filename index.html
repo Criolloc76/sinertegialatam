@@ -32,14 +32,20 @@
       form.addEventListener('submit', function(e) {
         e.preventDefault(); // Evita que se recargue la página
 
-        const formData = new FormData(form);
+        // Construye los datos en formato de URL
+        const formData = new URLSearchParams();
+        formData.append('id', document.getElementById('id').value);
+        formData.append('nombre', document.getElementById('nombre').value);
+        formData.append('pais', document.getElementById('pais').value);
+        formData.append('email', document.getElementById('email').value);
+        formData.append('telefono', document.getElementById('telefono').value);
 
         fetch('https://script.google.com/macros/s/AKfycbzWJ48_4j_yvuatbyYf_Rs5qy9DecuDvalCGAvaGnJqSWDdegZSfbUarF3Uhe9C1TgD4A/exec', {
           method: 'POST',
           headers: {
-            'Content-Type': 'application/x-www-form-urlencoded' // Importante: Formato adecuado para envío de formularios
+            'Content-Type': 'application/x-www-form-urlencoded' // Importante
           },
-          body: new URLSearchParams(formData)
+          body: formData.toString() // Enviar los datos como una cadena
         })
         .then(response => response.json())
         .then(data => {
