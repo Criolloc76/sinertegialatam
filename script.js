@@ -4,16 +4,11 @@ document.addEventListener('DOMContentLoaded', function() {
   form.addEventListener('submit', function(e) {
     e.preventDefault(); // Evita que se recargue la página
 
-    const data = new FormData(form);
-
-    // Imprime los datos que serán enviados para depuración
-    for (var pair of data.entries()) {
-      console.log(pair[0]+ ': ' + pair[1]);
-    }
+    const formData = new FormData(form);
 
     fetch('https://script.google.com/macros/s/AKfycbzWJ48_4j_yvuatbyYf_Rs5qy9DecuDvalCGAvaGnJqSWDdegZSfbUarF3Uhe9C1TgD4A/exec', {
       method: 'POST',
-      body: data
+      body: new URLSearchParams(formData) // Cambiar a URLSearchParams para asegurar que el formato sea correcto
     })
     .then(response => response.json())
     .then(data => {
