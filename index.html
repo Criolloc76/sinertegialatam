@@ -1,7 +1,10 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulario de Contacto</title>
+    <script src="script.js" defer></script>
 </head>
 <body>
     <form id="contactForm">
@@ -22,19 +25,5 @@
 
         <input type="submit" value="Enviar">
     </form>
-
-    <script>
-        document.getElementById("contactForm").onsubmit = function(event) {
-            event.preventDefault();
-            var formData = new FormData(this);
-            fetch("https://script.google.com/macros/s/AKfycbzWJ48_4j_yvuatbyYf_Rs5qy9DecuDvalCGAvaGnJqSWDdegZSfbUarF3Uhe9C1TgD4A/exec", {
-                method: "POST",
-                body: formData
-            }).then(response => response.text()).then(data => {
-                alert(data);
-                this.reset(); // Limpia el formulario después de enviar
-            });
-        };
-    </script>
 </body>
 </html>
